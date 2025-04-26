@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolShare - College Tool Rental</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-black text-gray-200 font-sans">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black bg-opacity-90 backdrop-filter backdrop-blur-lg border-b border-gray-800">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-tools text-yellow-500 text-2xl"></i>
+                    <a href="#" class="text-xl font-bold text-white">Rent-<span class="text-yellow-500">A-Tool</span></a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#tools" class="nav-link">Tools</a>
+                    <a href="#how-it-works" class="nav-link">How It Works</a>
+                    <a href="#pricing" class="nav-link">Pricing</a>
+                    <a href="#faq" class="nav-link">FAQ</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="hidden md:block px-4 py-2 rounded-md bg-gray-800 hover:bg-gray-700 transition-colors">Login</a>
+                    <a href="#" class="hidden md:block px-4 py-2 rounded-md bg-yellow-600 hover:bg-yellow-500 text-black font-medium transition-colors">Sign Up</a>
+                    <button id="mobile-menu-button" class="md:hidden text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-b border-gray-800">
+            <div class="container mx-auto px-4 py-2">
+                <div class="flex flex-col space-y-3">
+                    <a href="#home" class="mobile-nav-link">Home</a>
+                    <a href="#tools" class="mobile-nav-link">Tools</a>
+                    <a href="#how-it-works" class="mobile-nav-link">How It Works</a>
+                    <a href="#pricing" class="mobile-nav-link">Pricing</a>
+                    <a href="#faq" class="mobile-nav-link">FAQ</a>
+                    <div class="flex space-x-2 pt-2">
+                        <a href="#" class="block flex-1 text-center px-4 py-2 rounded-md bg-gray-800 hover:bg-gray-700 transition-colors">Login</a>
+                        <a href="#" class="block flex-1 text-center px-4 py-2 rounded-md bg-yellow-600 hover:bg-yellow-500 text-black font-medium transition-colors">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-16 bg-gradient-to-b from-gray-900 to-black">
+        <div class="container mx-auto px-4 py-16">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 fade-in">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
+                        Rent Premium Tools <span class="text-yellow-500">Without Breaking the Bank</span>
+                    </h1>
+                    <p class="text-xl text-gray-400 mb-8">
+                        Access high-quality tools for your college projects at a fraction of the cost. 
+                        Perfect for engineering students, makers, and creators.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#tools" class="btn-primary">
+                            Browse Tools
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#how-it-works" class="btn-secondary">
+                            How It Works
+                            <i class="fas fa-info-circle ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-12 md:mt-0 fade-in-delayed">
+                    <div class="relative ml-6">
+                        <div class="absolute -inset-0.5 bg-gradient-to-r from-yellow-600 to-yellow-400 rounded-lg blur opacity-75 animate-pulse"></div>
+                        <img src="image.png" alt="College students using tools" class="relative rounded-lg shadow-2xl w-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Tools Section -->
+    <section id="tools" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Featured <span class="text-yellow-500">Tools</span></h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Browse our collection of high-quality tools available for rent. From power tools to specialized equipment, we've got you covered.
+                </p>
+            </div>
+
+            <div class="flex justify-center mb-10">
+                <div class="inline-flex bg-gray-800 rounded-lg p-1">
+                    <button class="category-btn active" data-category="all">All Tools</button>
+                    <button class="category-btn" data-category="power">Power Tools</button>
+                    <button class="category-btn" data-category="hand">Hand Tools</button>
+                    <button class="category-btn" data-category="specialty">Specialty</button>
+                    <button class="category-btn" data-category="measurement">Measurement</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Tool Card 1 -->
+                <div class="tool-card" data-category="power">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="relative">
+                            <img src="cordless.jpg" alt="Cordless Drill" class="w-full h-48 object-cover">
+                            <div class="absolute top-0 right-0 bg-yellow-500 text-black font-bold px-3 py-1 m-2 rounded-md">
+                                Rs-5/day
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Cordless Drill</h3>
+                            <p class="text-gray-400 mb-4">Professional-grade 20V cordless drill with multiple speed settings and LED light.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm bg-gray-700 px-2 py-1 rounded">Available: 8</span>
+                                <button class="rent-btn">
+                                    Rent Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tool Card 2 -->
+                <div class="tool-card" data-category="power">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="relative">
+                            <img src="circularsaw.jpg" alt="Circular Saw" class="w-full h-48 object-cover">
+                            <div class="absolute top-0 right-0 bg-yellow-500 text-black font-bold px-3 py-1 m-2 rounded-md">
+                                Rs-8/day
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Circular Saw</h3>
+                            <p class="text-gray-400 mb-4">7-1/4 inch circular saw with laser guide and dust collection system.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm bg-gray-700 px-2 py-1 rounded">Available: 5</span>
+                                <button class="rent-btn">
+                                    Rent Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tool Card 3 -->
+                <div class="tool-card" data-category="measurement">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="relative">
+                            <img src="digital caliper.jpg" alt="Digital Caliper" class="w-full h-48 object-cover">
+                            <div class="absolute top-0 right-0 bg-yellow-500 text-black font-bold px-3 py-1 m-2 rounded-md">
+                                Rs-3/day
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Digital Caliper</h3>
+                            <p class="text-gray-400 mb-4">Precision digital caliper with LCD display, metric and imperial measurements.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm bg-gray-700 px-2 py-1 rounded">Available: 12</span>
+                                <button class="rent-btn">
+                                    Rent Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tool Card 4 -->
+                <div class="tool-card" data-category="specialty">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="relative">
+                            <img src="3dprinter.jpg" alt="3D Printer" class="w-full h-48 object-cover">
+                            <div class="absolute top-0 right-0 bg-yellow-500 text-black font-bold px-3 py-1 m-2 rounded-md">
+                                Rs-15/day
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">3D Printer</h3>
+                            <p class="text-gray-400 mb-4">High-quality 3D printer with large build volume and multiple filament compatibility.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm bg-gray-700 px-2 py-1 rounded">Available: 3</span>
+                                <button class="rent-btn">
+                                    Rent Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tool Card 5 -->
+                <div class="tool-card" data-category="hand">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="relative">
+                            <img src="socketset.jpg" alt="Socket Set" class="w-full h-48 object-cover">
+                            <div class="absolute top-0 right-0 bg-yellow-500 text-black font-bold px-3 py-1 m-2 rounded-md">
+                                Rs-4/day
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Socket Set</h3>
+                            <p class="text-gray-400 mb-4">Complete 40-piece socket set with ratchet handles and extensions.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm bg-gray-700 px-2 py-1 rounded">Available: 7</span>
+                                <button class="rent-btn">
+                                    Rent Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tool Card 6 -->
+                <div class="tool-card" data-category="specialty">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="relative">
+                            <img src="osci.jpg" alt="Oscilloscope" class="w-full h-48 object-cover">
+                            <div class="absolute top-0 right-0 bg-yellow-500 text-black font-bold px-3 py-1 m-2 rounded-md">
+                                Rs-12/day
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Oscilloscope</h3>
+                            <p class="text-gray-400 mb-4">Digital oscilloscope with 100MHz bandwidth and 4 channels for electrical engineering projects.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm bg-gray-700 px-2 py-1 rounded">Available: 2</span>
+                                <button class="rent-btn">
+                                    Rent Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tool Card 7 -->
+                <div class="tool-card" data-category="power">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="relative">
+                            <img src="angle.jpg" alt="Angle Grinder" class="w-full h-48 object-cover">
+                            <div class="absolute top-0 right-0 bg-yellow-500 text-black font-bold px-3 py-1 m-2 rounded-md">
+                               Rs-6/day
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Angle Grinder</h3>
+                            <p class="text-gray-400 mb-4">4.5-inch angle grinder with multiple attachments for cutting and grinding.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm bg-gray-700 px-2 py-1 rounded">Available: 6</span>
+                                <button class="rent-btn">
+                                    Rent Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tool Card 8 -->
+                <div class="tool-card" data-category="measurement">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="relative">
+                            <img src="laser.jpg" alt="Laser Level" class="w-full h-48 object-cover">
+                            <div class="absolute top-0 right-0 bg-yellow-500 text-black font-bold px-3 py-1 m-2 rounded-md">
+                                Rs-7/day
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Laser Level</h3>
+                            <p class="text-gray-400 mb-4">Self-leveling cross-line laser level with tripod and carrying case.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm bg-gray-700 px-2 py-1 rounded">Available: 4</span>
+                                <button class="rent-btn">
+                                    Rent Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#" class="btn-primary inline-block">
+                    View All Tools
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-black">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">How It <span class="text-yellow-500">Works</span></h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Renting tools from ToolShare is simple, affordable, and designed specifically for college students.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-gray-900 rounded-lg p-8 text-center hover:bg-gray-800 transition-colors step-card">
+                    <div class="w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center text-black text-2xl font-bold mx-auto mb-6">
+                        1
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Browse & Reserve</h3>
+                    <p class="text-gray-400">
+                        Browse our extensive catalog of tools and reserve what you need for your project. Filter by category, availability, and price.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-gray-900 rounded-lg p-8 text-center hover:bg-gray-800 transition-colors step-card">
+                    <div class="w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center text-black text-2xl font-bold mx-auto mb-6">
+                        2
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Pick Up</h3>
+                    <p class="text-gray-400">
+                        Visit our on-campus location to pick up your tools. Just show your student ID and confirmation email. Quick and easy!
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-gray-900 rounded-lg p-8 text-center hover:bg-gray-800 transition-colors step-card">
+                    <div class="w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center text-black text-2xl font-bold mx-auto mb-6">
+                        3
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Return</h3>
+                    <p class="text-gray-400">
+                        Return the tools by the due date. Late returns may incur additional fees. Extensions available if tools aren't reserved.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-gray-900 rounded-lg p-8 fade-in">
+                <h3 class="text-2xl font-bold text-white mb-6 text-center">Rental Process Timeline</h3>
+                <div class="relative">
+                    <!-- Timeline Line -->
+                    <div class="absolute left-0 md:left-1/2 top-0 h-full w-1 bg-yellow-500 transform md:translate-x-[-50%]"></div>
+                    
+                    <!-- Timeline Items -->
+                    <div class="timeline-container">
+                        <!-- Item 1 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4 class="text-xl font-bold text-white mb-2">Create Account</h4>
+                                <p class="text-gray-400">Sign up with your college email to get student discounts automatically applied.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 2 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4 class="text-xl font-bold text-white mb-2">Browse Tools</h4>
+                                <p class="text-gray-400">Search our inventory by category, project type, or specific tool name.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 3 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4 class="text-xl font-bold text-white mb-2">Reserve Online</h4>
+                                <p class="text-gray-400">Select your rental dates and complete the reservation process.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 4 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4 class="text-xl font-bold text-white mb-2">Pick Up Tools</h4>
+                                <p class="text-gray-400">Visit our campus location during operating hours to collect your tools.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 5 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4 class="text-xl font-bold text-white mb-2">Complete Your Project</h4>
+                                <p class="text-gray-400">Use the tools for your project with access to online tutorials and support.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 6 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4 class="text-xl font-bold text-white mb-2">Return Tools</h4>
+                                <p class="text-gray-400">Return the tools in good condition by the due date to avoid late fees.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Affordable <span class="text-yellow-500">Pricing</span></h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Our rental rates are designed to be affordable for college students. Save money by renting instead of buying expensive tools.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Basic Plan -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 pricing-card">
+                    <div class="bg-gray-700 p-6 text-center">
+                        <h3 class="text-2xl font-bold text-white">Basic Rental</h3>
+                        <div class="text-4xl font-bold text-yellow-500 mt-4">Pay Per Tool</div>
+                        <p class="text-gray-400 mt-2">Perfect for occasional projects</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>No membership fee</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Daily rental rates</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Standard security deposit</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Basic online support</span>
+                            </li>
+                            <li class="flex items-start opacity-50">
+                                <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                                <span>No discounts on extended rentals</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="btn-secondary w-full text-center mt-8">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 pricing-card relative">
+                    <div class="absolute top-0 right-0 bg-yellow-500 text-black font-bold px-3 py-1 m-2 rounded-md">
+                        Popular
+                    </div>
+                    <div class="bg-yellow-600 p-6 text-center">
+                        <h3 class="text-2xl font-bold text-black">Semester Pass</h3>
+                        <div class="text-4xl font-bold text-black mt-4">Rs-499.99</div>
+                        <p class="text-gray-800 mt-2">Best for semester-long projects</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>20% discount on all rentals</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Reduced security deposits</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Priority reservations</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Extended rental periods</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Premium support</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="btn-primary w-full text-center mt-8">
+                            Sign Up Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Group Plan -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 pricing-card">
+                    <div class="bg-gray-700 p-6 text-center">
+                        <h3 class="text-2xl font-bold text-white">Group Plan</h3>
+                        <div class="text-4xl font-bold text-yellow-500 mt-4">Rs-899.99</div>
+                        <p class="text-gray-400 mt-2">Perfect for project teams</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>30% discount on all rentals</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Multiple users can rent simultaneously</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Minimal security deposits</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>24/7 priority support</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Free tool training sessions</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="btn-secondary w-full text-center mt-8">
+                            Get Team Access
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-gray-800 rounded-lg p-8 fade-in">
+                <h3 class="text-2xl font-bold text-white mb-6 text-center">Compare Plans</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="text-left">
+                                <th class="p-3 border-b border-gray-700">Feature</th>
+                                <th class="p-3 border-b border-gray-700">Basic Rental</th>
+                                <th class="p-3 border-b border-gray-700 bg-yellow-600 text-black">Semester Pass</th>
+                                <th class="p-3 border-b border-gray-700">Group Plan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="p-3 border-b border-gray-700">Price</td>
+                                <td class="p-3 border-b border-gray-700">Pay per tool</td>
+                                <td class="p-3 border-b border-gray-700 bg-gray-700">Rs-499.99/semester</td>
+                                <td class="p-3 border-b border-gray-700">Rs-899.99/semester</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 border-b border-gray-700">Discount</td>
+                                <td class="p-3 border-b border-gray-700">None</td>
+                                <td class="p-3 border-b border-gray-700 bg-gray-700">20% off</td>
+                                <td class="p-3 border-b border-gray-700">30% off</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 border-b border-gray-700">Max Rental Period</td>
+                                <td class="p-3 border-b border-gray-700">7 days</td>
+                                <td class="p-3 border-b border-gray-700 bg-gray-700">14 days</td>
+                                <td class="p-3 border-b border-gray-700">21 days</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 border-b border-gray-700">Simultaneous Rentals</td>
+                                <td class="p-3 border-b border-gray-700">1 tool</td>
+                                <td class="p-3 border-b border-gray-700 bg-gray-700">2 tools</td>
+                                <td class="p-3 border-b border-gray-700">5 tools</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 border-b border-gray-700">Reservation Priority</td>
+                                <td class="p-3 border-b border-gray-700">Standard</td>
+                                <td class="p-3 border-b border-gray-700 bg-gray-700">Priority</td>
+                                <td class="p-3 border-b border-gray-700">Highest Priority</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3">Training Sessions</td>
+                                <td class="p-3">Rs-10 each</td>
+                                <td class="p-3 bg-gray-700">Rs-5 each</td>
+                                <td class="p-3">Free</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Frequently Asked <span class="text-yellow-500">Questions</span></h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Get answers to common questions about our tool rental service.
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="space-y-6">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-gray-800 rounded-lg overflow-hidden faq-item">
+                        <button class="faq-question w-full text-left p-6 focus:outline-none flex justify-between items-center">
+                            <span class="text-xl font-bold text-white">What do I need to rent a tool?</span>
+                            <i class="fas fa-chevron-down text-yellow-500 transition-transform"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 hidden">
+                            <p class="text-gray-400">
+                                To rent a tool, you need to be a registered student with a valid student ID. You'll also need to create an account on our platform, provide a valid form of payment, and sign our rental agreement. For certain high-value tools, a security deposit may be required.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-gray-800 rounded-lg overflow-hidden faq-item">
+                        <button class="faq-question w-full text-left p-6 focus:outline-none flex justify-between items-center">
+                            <span class="text-xl font-bold text-white">How long can I keep the tools?</span>
+                            <i class="fas fa-chevron-down text-yellow-500 transition-transform"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 hidden">
+                            <p class="text-gray-400">
+                                Standard rental periods range from 1 to 7 days for basic rentals. Semester Pass members can rent for up to 14 days, and Group Plan members for up to 21 days. Extensions are possible if the tool isn't reserved by another student. Late returns incur additional fees.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-gray-800 rounded-lg overflow-hidden faq-item">
+                        <button class="faq-question w-full text-left p-6 focus:outline-none flex justify-between items-center">
+                            <span class="text-xl font-bold text-white">What happens if I damage a tool?</span>
+                            <i class="fas fa-chevron-down text-yellow-500 transition-transform"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 hidden">
+                            <p class="text-gray-400">
+                                We understand that accidents happen. Minor wear and tear is expected and covered. For significant damage, you may be charged a repair fee or replacement cost. We offer an optional damage protection plan for Rs-999 per rental that limits your liability to Rs-1999 regardless of the damage.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="bg-gray-800 rounded-lg overflow-hidden faq-item">
+                        <button class="faq-question w-full text-left p-6 focus:outline-none flex justify-between items-center">
+                            <span class="text-xl font-bold text-white">Do you provide training on how to use the tools?</span>
+                            <i class="fas fa-chevron-down text-yellow-500 transition-transform"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 hidden">
+                            <p class="text-gray-400">
+                                Yes! We offer basic usage instructions for all tools at pickup. For more complex equipment, we provide detailed manuals and online video tutorials. We also offer in-person training sessions: Rs--500 for basic rentals, Rs-299 for Semester Pass members, and free for Group Plan members.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 5 -->
+                    <div class="bg-gray-800 rounded-lg overflow-hidden faq-item">
+                        <button class="faq-question w-full text-left p-6 focus:outline-none flex justify-between items-center">
+                            <span class="text-xl font-bold text-white">Can I reserve tools in advance?</span>
+                            <i class="fas fa-chevron-down text-yellow-500 transition-transform"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 hidden">
+                            <p class="text-gray-400">
+                                We recommend reserving tools in advance, especially for popular items or during busy periods like end-of-semester project time. Basic rentals can reserve up to 1 week in advance, Semester Pass members up to 2 weeks, and Group Plan members up to 3 weeks.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 6 -->
+                    <div class="bg-gray-800 rounded-lg overflow-hidden faq-item">
+                        <button class="faq-question w-full text-left p-6 focus:outline-none flex justify-between items-center">
+                            <span class="text-xl font-bold text-white">Where is your pickup location?</span>
+                            <i class="fas fa-chevron-down text-yellow-500 transition-transform"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 hidden">
+                            <p class="text-gray-400">
+                                Our main pickup location is in the Engineering Building, Room 103. We're open Monday-Friday from 9am-6pm and Saturdays from 10am-4pm. During finals week, we extend our hours to 8am-8pm on weekdays to better accommodate student projects.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 text-center">
+                    <p class="text-gray-400 mb-6">Don't see your question answered here?</p>
+                    <a href="#" class="btn-secondary inline-block">
+                        Contact Support
+                        <i class="fas fa-headset ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-black relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute inset-0 bg-gradient-to-r from-yellow-600 to-yellow-400 transform -skew-y-6"></div>
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Ready to Start Your Next Project?</h2>
+                <p class="text-xl text-gray-300 mb-10">
+                    Join thousands of students who are saving money and completing amazing projects with ToolShare.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="#" class="btn-primary">
+                        Create Account
+                        <i class="fas fa-user-plus ml-2"></i>
+                    </a>
+                    <a href="#tools" class="btn-secondary">
+                        Browse Tools
+                        <i class="fas fa-tools ml-2"></i>
+                    </a>
+                </div>
+                <div class="mt-12 flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-12">
+                    <div class="flex items-center">
+                        <i class="fas fa-users text-yellow-500 text-3xl mr-4"></i>
+                        <div class="text-left">
+                            <div class="text-2xl font-bold text-white">2,5000+</div>
+                            <div class="text-gray-400">Active Students</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-tools text-yellow-500 text-3xl mr-4"></i>
+                        <div class="text-left">
+                            <div class="text-2xl font-bold text-white">5000+</div>
+                            <div class="text-gray-400">Available Tools</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-school text-yellow-500 text-3xl mr-4"></i>
+                        <div class="text-left">
+                            <div class="text-2xl font-bold text-white">120+</div>
+                            <div class="text-gray-400">Campus Locations</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-gray-800 rounded-lg p-8 md:p-12 shadow-lg">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-2/3 mb-8 md:mb-0 md:pr-8">
+                        <h3 class="text-2xl font-bold text-white mb-4">Stay Updated</h3>
+                        <p class="text-gray-400">
+                            Subscribe to our newsletter to receive updates on new tools, special offers, and tips for your projects.
+                        </p>
+                    </div>
+                    <div class="md:w-1/3 w-full">
+                        <form class="flex flex-col space-y-4">
+                            <input type="email" placeholder="Your college email" class="px-4 py-3 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+                            <button type="submit" class="btn-primary">
+                                Subscribe
+                                <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-gray-400 pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <i class="fas fa-tools text-yellow-500 text-2xl"></i>
+                        <span class="text-xl font-bold text-white">Tool<span class="text-yellow-500">Share</span></span>
+                    </div>
+                    <p class="mb-6">
+                        Making quality tools accessible and affordable for all college students.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-yellow-600 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-yellow-600 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-yellow-600 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="hover:text-yellow-500 transition-colors">Home</a></li>
+                        <li><a href="#tools" class="hover:text-yellow-500 transition-colors">Tools</a></li>
+                        <li><a href="#how-it-works" class="hover:text-yellow-500 transition-colors">How It Works</a></li>
+                        <li><a href="#pricing" class="hover:text-yellow-500 transition-colors">Pricing</a></li>
+                        <li><a href="#faq" class="hover:text-yellow-500 transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-6">Resources</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-yellow-500 transition-colors">Tool Guides</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition-colors">Project Ideas</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition-colors">Safety Tips</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition-colors">Tutorials</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-6">Contact Us</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">   
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-yellow-500"></i>
+                            <span>AB-1, Room 103<br>University Campus</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-yellow-500"></i>
+                            <span>+91-9369187644</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-yellow-500"></i>
+                            <span>info@toolrent.@gla.ac.in</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-3 text-yellow-500"></i>
+                            <span>Mon-Fri: 9am-6pm, Sat: 10am-4pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 mt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p>&copy; 2023 ToolShare. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="hover:text-yellow-500 transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-yellow-500 transition-colors">Terms of Service</a>
+                        <a href="#" class="hover:text-yellow-500 transition-colors">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-yellow-600 text-black flex items-center justify-center shadow-lg transform transition-transform scale-0">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Rent Modal -->
+    <div id="rent-modal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-800 rounded-lg max-w-md w-full mx-4 overflow-hidden shadow-2xl">
+            <div class="flex justify-between items-center bg-gray-700 p-4">
+                <h3 class="text-xl font-bold text-white">Rent Tool</h3>
+                <button id="close-modal" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div id="modal-tool-info" class="flex items-center mb-6">
+                    <img id="modal-tool-image" src="/placeholder.svg?height=100&width=100" alt="Tool" class="w-20 h-20 object-cover rounded-md mr-4">
+                    <div>
+                        <h4 id="modal-tool-name" class="text-lg font-bold text-white">Tool Name</h4>
+                        <p id="modal-tool-price" class="text-yellow-500">$0/day</p>
+                    </div>
+                </div>
+                <form id="rental-form" class="space-y-4">
+                    <div>
+                        <label class="block text-gray-400 mb-2">Rental Period</label>
+                        <div class="flex space-x-4">
+                            <div class="flex-1">
+                                <label class="block text-gray-400 text-sm mb-1">Start Date</label>
+                                <input type="date" class="w-full px-4 py-2 rounded-md bg-gray-700 border border-gray-600 text-white">
+                            </div>
+                            <div class="flex-1">
+                                <label class="block text-gray-400 text-sm mb-1">End Date</label>
+                                <input type="date" class="w-full px-4 py-2 rounded-md bg-gray-700 border border-gray-600 text-white">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 mb-2">Additional Options</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox h-5 w-5 text-yellow-500 rounded">
+                                <span class="ml-2 text-gray-300">Damage Protection ($5)</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox h-5 w-5 text-yellow-500 rounded">
+                                <span class="ml-2 text-gray-300">Basic Training Session ($10)</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox h-5 w-5 text-yellow-500 rounded">
+                                <span class="ml-2 text-gray-300">Extended Hours Access ($3/day)</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 mb-2">Special Requests</label>
+                        <textarea class="w-full px-4 py-2 rounded-md bg-gray-700 border border-gray-600 text-white h-24 resize-none"></textarea>
+                    </div>
+                    <div class="border-t border-gray-700 pt-4">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-400">Base Rental:</span>
+                            <span class="text-white">$15.00</span>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-400">Options:</span>
+                            <span class="text-white">$0.00</span>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-400">Security Deposit:</span>
+                            <span class="text-white">$50.00</span>
+                        </div>
+                        <div class="flex justify-between font-bold">
+                            <span class="text-gray-200">Total Due Today:</span>
+                            <span class="text-yellow-500">$65.00</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary w-full">
+                        Complete Reservation
+                        <i class="fas fa-check-circle ml-2"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
