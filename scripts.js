@@ -64,41 +64,12 @@ document.addEventListener('DOMContentLoaded', function() {
             faqItem.classList.toggle('active');
             
             // Toggle answer visibility
-            if (answer.style.maxHeight) {
-                answer.style.maxHeight = null;
-                answer.classList.add('hidden');
-            } else {
+            if (answer.classList.contains('hidden')) {
                 answer.classList.remove('hidden');
-                answer.style.maxHeight = answer.scrollHeight + 'px';
+            } else {
+                answer.classList.add('hidden');
             }
         });
-    });
-
-    // Testimonial Slider
-    const testimonialTrack = document.querySelector('.testimonial-track');
-    const testimonialSlides = document.querySelectorAll('.testimonial-slide');
-    const prevButton = document.getElementById('prev-testimonial');
-    const nextButton = document.getElementById('next-testimonial');
-    
-    let currentIndex = 0;
-    const slideWidth = testimonialSlides[0].offsetWidth + 32; // Width + padding
-    
-    function updateSlider() {
-        testimonialTrack.scrollLeft = currentIndex * slideWidth;
-    }
-    
-    prevButton.addEventListener('click', function() {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateSlider();
-        }
-    });
-    
-    nextButton.addEventListener('click', function() {
-        if (currentIndex < testimonialSlides.length - 1) {
-            currentIndex++;
-            updateSlider();
-        }
     });
 
     // Back to Top Button
@@ -119,30 +90,48 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Rent Modal
+    // Rent Modal - Fixed functionality
     const rentButtons = document.querySelectorAll('.rent-btn');
     const rentModal = document.getElementById('rent-modal');
     const closeModal = document.getElementById('close-modal');
     const modalToolName = document.getElementById('modal-tool-name');
     const modalToolPrice = document.getElementById('modal-tool-price');
     const modalToolImage = document.getElementById('modal-tool-image');
+    const baseRentalCost = document.getElementById('base-rental-cost');
+    const optionsCost = document.getElementById('options-cost');
+    const totalCost = document.getElementById('total-cost');
     
+    // Add event listeners to all rent buttons
     rentButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const toolCard = this.closest('.tool-card');
+            const toolCard = this.closest('.tool-card').querySelector('.bg-gray-800');
             const toolName = toolCard.querySelector('h3').textContent;
             const toolPrice = toolCard.querySelector('.absolute').textContent;
             const toolImage = toolCard.querySelector('img').src;
             
+            // Update modal with tool information
             modalToolName.textContent = toolName;
             modalToolPrice.textContent = toolPrice;
             modalToolImage.src = toolImage;
             
+            // Extract the price value for calculations
+            const priceText = toolPrice;
+            const priceMatch = priceText.match(/Rs-(\d+)/);
+            const price = priceMatch ? parseFloat(priceMatch[1]) : 0;
+            
+            // Update base rental cost
+            baseRentalCost.textContent = `Rs-${price.toFixed(2)}`;
+            
+            // Calculate total
+            updateTotalCost();
+            
+            // Show the modal
             rentModal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         });
     });
     
+    // Close modal when clicking the close button
     closeModal.addEventListener('click', function() {
         rentModal.classList.add('hidden');
         document.body.style.overflow = 'auto';
@@ -154,6 +143,37 @@ document.addEventListener('DOMContentLoaded', function() {
             rentModal.classList.add('hidden');
             document.body.style.overflow = 'auto';
         }
+    });
+
+    // Calculate rental cost dynamically
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    
+    function updateTotalCost() {
+        let optionsCostValue = 0;
+        
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                if (checkbox.nextElementSibling.textContent.includes('Damage Protection')) {
+                    optionsCostValue += 5;
+                } else if (checkbox.nextElementSibling.textContent.includes('Training')) {
+                    optionsCostValue += 10;
+                } else if (checkbox.nextElementSibling.textContent.includes('Extended Hours')) {
+                    optionsCostValue += 3;
+                }
+            }
+        });
+        
+        optionsCost.textContent = `Rs-${optionsCostValue.toFixed(2)}`;
+        
+        const baseRental = parseFloat(baseRentalCost.textContent.replace('Rs-', ''));
+        const deposit = 50; // Fixed deposit amount
+        
+        const total = baseRental + optionsCostValue + deposit;
+        totalCost.textContent = `Rs-${total.toFixed(2)}`;
+    }
+    
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateTotalCost);
     });
 
     // Form Submission
@@ -168,28 +188,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         rentModal.classList.add('hidden');
         document.body.style.overflow = 'auto';
-    });
-
-    // Smooth scrolling for navigation links
-    const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
-            
-            // Close mobile menu if open
-            if (!mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.add('hidden');
-            }
-        });
     });
 
     // Dynamic date calculations for rental form
@@ -228,40 +226,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
-    // Calculate rental cost dynamically
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    const baseRentalElement = document.querySelector('.flex.justify-between.mb-2:nth-child(1) .text-white');
-    const optionsElement = document.querySelector('.flex.justify-between.mb-2:nth-child(2) .text-white');
-    const totalElement = document.querySelector('.flex.justify-between.font-bold .text-yellow-500');
-    
-    function updateCost() {
-        let optionsCost = 0;
-        
-        checkboxes.forEach(checkbox => {
-            if (checkbox.checked) {
-                if (checkbox.nextElementSibling.textContent.includes('Damage Protection')) {
-                    optionsCost += 5;
-                } else if (checkbox.nextElementSibling.textContent.includes('Training')) {
-                    optionsCost += 10;
-                } else if (checkbox.nextElementSibling.textContent.includes('Extended Hours')) {
-                    optionsCost += 3;
-                }
-            }
-        });
-        
-        optionsElement.textContent = `$${optionsCost.toFixed(2)}`;
-        
-        const baseRental = parseFloat(baseRentalElement.textContent.replace('$', ''));
-        const deposit = 50; // Fixed deposit amount
-        
-        const total = baseRental + optionsCost + deposit;
-        totalElement.textContent = `$${total.toFixed(2)}`;
-    }
-    
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', updateCost);
-    });
 
     // Initialize first FAQ to be open
     if (faqQuestions.length > 0) {
