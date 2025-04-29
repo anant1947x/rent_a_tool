@@ -7,6 +7,7 @@ My project solves this by creating a website where students can easily rent tool
 
 
 
+
 ✅ Major Benefits of Online Tool Booking
 🔍 Better Tracking and Record-Keeping
 Every rental is recorded automatically — no more lost papers or guessing.
@@ -23,6 +24,9 @@ Instantly see which tools are available.
 Prevents double-booking and unnecessary waiting.
 🔔 Automatic Notifications
 Email or SMS alerts for pick-up times, return deadlines, and overdue tools.
+
+
+
 
 
 💡 How Our Website Works – Rent-A-Tool
@@ -59,6 +63,8 @@ If the tool is damaged, the admin can charge a fine to the user’s account.
 
 
 
+
+
 ⚙️ Key Features
 🔔 Notifications:
 Automatic email/SMS reminders for upcoming return dates.
@@ -69,6 +75,8 @@ View all your past and current rentals in one place.
 💳 Credit System:
 If your pre-booked tool isn’t available on time due to another user’s late return or maintenance, you’ll receive a credit token. This token gives you a discount on your next rental.
 The credit comes from a portion of the late fine charged to the previous user, as a way to compensate you for the inconvenience.
+
+
 
 
 
@@ -119,4 +127,6 @@ Students can see which tools are available, book them, and get reminders. Admins
 The system also gives credit if a student faces problems because of a late return by someone else.
 
 Overall, this project saves time, reduces tool loss, and makes tool-sharing more organized and fair for everyone.
+
+
 ![image](https://github.com/user-attachments/assets/fa35e7cf-76e8-4d0c-a2d3-dc5f4f0a2483)
